@@ -1,0 +1,65 @@
+#app:has(.settings-view) {
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 0;
+    pointer-events: auto !important;
+}
+
+.settings-container {
+    width: 80%;
+    margin: auto;
+}
+
+.settings-item {
+    margin: 10px 0;
+}
+
+.settings-item input {
+    width: calc(100% - 30px);
+    padding: 0.5rem;
+    margin: 10px auto;
+    border: 5px solid var(--black-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+section.settings-view {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    pointer-events: auto !important;
+    width: 100%;
+    z-index: 1;
+}
+
+#upload_settings_oauth {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: auto
+}
+
+#oauthuser{
+    align-items: center;
+}
+
+.settings-username {
+    font-family: 'Press Start 2P';
+    color: white;
+    font-size: 1.7rem;
+    margin: 0.5rem 0 0 1rem;
+}
+
+.blocked-user-item {
+    display: flex;
+    justify-content: space-between;
+    text-transform: capitalize;
+    margin: 0 25%;
+}
+
+.blocked-user-item button {
+    background-color: var(--blue-color);
+    color: white;
+}

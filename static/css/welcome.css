@@ -1,0 +1,132 @@
+#app:has(#welcome-title) {
+    padding: 10px;
+}
+
+#welcome-title.cyberpunk::before {
+    clip-path: none;
+    background-color: none;
+    height: 0;
+}
+
+#welcome-title.cyberpunk::after {
+    content: '';
+}
+
+#welcome-brand {
+    font-family: "Press Start 2P" !important;
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+    color: #000;
+    font-style: italic; 
+}
+
+.welcome-container {
+    min-height: 500px;
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    display: inline-block;
+    pointer-events: auto !important;
+}
+
+.welcome-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.05), transparent);
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* welcome tabs */
+.welcome-tabs-container {
+    width: 100%;
+    background-color: black;
+    border-bottom: 2px solid var(--green-color);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+}
+
+.welcome-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+}
+
+.welcome-tab {
+    padding: 15px;
+    background: transparent;
+    display: block;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Press Start 2P';
+}
+
+.welcome-tab:hover {
+    color: var(--green-color);
+    text-shadow: 0 0 5px var(--green-color);
+}
+
+.welcome-tab.active {
+    color: var(--green-color);
+    text-shadow: 0 0 5px var(--green-color);
+}
+
+.welcome-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--green-color);
+    box-shadow: var(--text-glow);
+}
+
+.welcome-tab-content {
+    display: none;
+    background: transparent;
+    margin: 20px auto;
+    max-width: 1200px;
+    border-radius: 8px;
+}
+
+.welcome-tab-content.active {
+    display: block;
+    animation: fade-in 0.5s ease;
+}
+
+#rules-welcome {
+    display: flex;
+    justify-content: space-between ;
+    gap: 20px;
+}
+
+
+/* responsivness */
+@media (max-width: 750px) {
+    #welcome-title { padding-bottom : 0; }
+    #welcome-brand{ width:400px; }
+    .welcome-container { max-width: 400px; min-height: 0; }
+    h1#welcome-title p#welcome-brand { font-size: 0.7rem !important; }
+    .welcome-tab { padding: 0 !important; font-size: 8px; min-height: 30px; }
+    #welcome-text { font-size: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+    #welcome-title { padding-bottom : 0; }
+    #welcome-brand{ width:300px; }
+    .welcome-container { max-width: 300px; min-height: 0; }
+    h1#welcome-title p#welcome-brand { font-size: 0.7rem !important; }
+    .welcome-tab { padding: 0 !important; font-size: 8px; min-height: 30px; }
+    #welcome-text { font-size: 0.8rem; }
+}

@@ -1,0 +1,325 @@
+#chat-container {
+    display: flex; /* Enable flexbox layout */
+    flex-direction: row-reverse; /* Align children side by side */
+    justify-content: end; /* Place children at opposite ends */
+    position: fixed; /* Fixed position at the bottom of the page */
+    bottom: 0px; 
+    width: auto; /* Set width to auto to fit content */
+    max-width: 100%; /* Prevent overflow */
+    left: auto;
+    right: 0; /* Align to the right */
+    /* padding: 0 20px; */
+    z-index: 1000;
+    height: 33%;
+  }
+  
+  .main-chat-window {
+    flex: 1;
+    height: 100%;
+    width: min-content;
+    width: 350px;
+    overflow-y: auto;
+    min-height: 0;
+    background-color: var(--black-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0s 0.3s; /* Smooth fade-in/out */
+    color: var(--yellow-color);
+    align-self: flex-end;
+    bottom: 20px;
+    /* plutot faire ca pour garder la transition */
+    pointer-events: none; /* pour rendre clickable les boutons sur ProfileView */
+  }
+
+  .user-name {
+    cursor: pointer;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
+
+  #users-list-info .user-name {
+    overflow: visible;
+    font-size: 0.9rem;
+  }
+
+  .user-name:hover {
+    color: var(--green-color);  /* Change the text color on hover (e.g., blue) */
+}
+  
+  .main-chat-window.visible {
+    /* FELISE - same than in .main-chat-window */
+    visibility: visible;
+    opacity: 1;
+    /* display: block; */
+    transition: opacity 0.3s ease, visibility 0s;
+    pointer-events: auto; 
+  }
+  
+  .main-chat-window.hidden {
+    visibility: hidden; /* Hide when the class is added */
+    opacity: 0; /* Make it invisible */
+    transition: opacity 0.3s ease, visibility 0s 0.3s; /* Smooth fade-out */
+    pointer-events: none; /* ALLOws underneath buttons to be clickable */
+  }
+  
+  .main-chat-window .popover-header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+  
+  #open-chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+  }
+  
+  .btn-view-profile {
+    background-color: var(--blue-color);
+    color: white;
+    cursor: pointer;
+  }
+  
+  #close-chat-btn, #close-chat-window {
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .popover-header #close-chat-btn {
+    margin: 0px;
+  }
+
+  .main-chat-window h3 {
+    margin: 0;
+    color: var(--green-color);
+  }
+
+  #friends-list, #users-list, #users-list-info {
+    padding: 0;
+  }
+
+  #individual-chats-container {
+    width: 600px;
+  }
+
+  #chat-log-container {
+    width: 100%;
+  }
+
+  #indiv-chat-title{
+    margin: 5px 5px;
+  }
+
+  .chat-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-direction: row;
+  }
+
+  .chat-buttons-container button {
+    flex: 1 1 auto;
+    min-width: 0;
+    white-space: wrap;
+    overflow: hidden;
+  }
+  
+  .chat-window {
+    flex: 0 0 65%; /* Take up 65% of the width */
+    overflow-y: auto;
+    background-color: var(--yellow-color);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 100%;
+    z-index: 1000;
+    width: 100%;
+  }
+
+  .chat-window ul {
+    list-style: none;
+    padding: 10px; /* Add padding for spacing */
+    margin: 0;
+    max-height: 150px; /* Set a fixed height for the chat log */
+    overflow-y: auto; /* Enable scrolling for overflowing content */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: var(--black-color);
+    color: var(--yellow-color);
+    height: 200px;
+    word-break: break-word;
+  }
+
+  .message-container {
+    height: 210px; /*pour ne pas avoir de barre de defilement dans la indiv chat*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .message-container input {
+    padding: 0 !important; 
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    width: 100% !important;
+    border: 15px solid var(--black-color) !important;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    clip-path: none !important;
+    outline: none;
+  }
+  
+  .send-message-btn {
+    background-color: var(--green-color);
+    color: white;
+    cursor: pointer;
+    width: 50%;
+    margin: auto;
+    display: flex; /* Enables flexbox */
+    justify-content: center; /* Centers text horizontally */
+    align-items: center; /* Centers text vertically */
+    text-align: center; /* Ensure text alignment */
+    height: 40px; /* Set height to help vertical alignment */
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+
+  .game-1v1-invite-btn, .game-tournament-invite-btn {
+    background-color: var(--purple-color);
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+
+  .block-user-btn {
+    background-color: var(--red-color);
+    color: white;
+    cursor: pointer;
+    height: 40px;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  
+  .chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .chat-messages {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+
+  .chat-message-input {
+    width: 70%;
+    padding: 5px;
+    height: 10px;
+  }
+  
+  .send-chat-message-btn {
+    width: 25%;
+  }
+
+  @media (max-width: 1020px) {
+    .main-chat-window {
+      min-width: 300px;
+    }
+  }
+
+  .user-actions {
+    display: flex;
+  }
+
+  .user-actions button {
+    width: 40px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 700px) {
+    #chat-container {
+      flex-direction: column; /* Stack elements vertically */
+      bottom: 0;
+      padding: 10px;
+      position: fixed;
+      width: 100%;
+    }
+
+    .main-chat-window {
+      height: 100%;
+      z-index: 900; /* Lower z-index to be behind chat window */
+    }
+  
+    .chat-window {
+      width: 100%;
+      max-width: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: 1000; /* Higher z-index to stay in front */
+      height: 100%;
+    }
+
+    .chat-header { margin-bottom: 0; }
+    .chat-window ul { height: 100px; margin-top: 15px; }
+  }
+
+#users-list, #users-list-info {
+  width: 100%;
+}
+
+.search-container {
+  margin: 10px 0;
+  padding: 0 4px;
+}
+
+#user-search {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #30cfd0;
+  background-color: var(--black-color);
+  color: #30cfd0;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-size: 0.9rem;
+  border-radius: 10px;
+}
+
+#user-search::placeholder {
+  color: var(--yellow-color);
+}
+
+#user-search:focus::placeholder {
+  color: var(--yellow-color);
+  opacity: 0.7; /* Adjusts the opacity of the placeholder text */
+}
+
+#user-search:focus {
+  border-color: var(--yellow-color);
+  box-shadow: 0 0 5px rgba(48, 207, 208, 0.5);
+}
+
+#chat-container ul.cyberpunk > li, .cyberpunk ul > li {
+  list-style: none;
+  position: relative;
+  font-size: 0.9rem;
+  height: 33px;
+}
+
+#chat-log-container ul.cyberpunk > li, .cyberpunk ul > li {
+  font-size: 0.9rem !important;
+}

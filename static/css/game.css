@@ -1,0 +1,1147 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+#app:has(#pong-canvas) {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+}
+
+#pong-canvas {
+    position: relative;
+    width: 60%;
+    height: auto;
+    max-width: 800px;
+    max-height: 600px;
+    aspect-ratio: 4 / 3;
+    visibility: hidden; /* Hidden by default */
+    margin: 0 auto;
+    background-color: black;
+    border: 3px solid var(--yellow-color);
+}
+
+/* practice */
+#game-info-container{
+  width:100%;
+  max-width: 85%;
+  margin: 0;
+}
+
+#practice-title{
+  padding-bottom: 0;
+}
+
+#rules{
+  display: flex;
+  justify-content: space-between ;
+  gap: 20px;
+  border: 10px solid var(--black-color);
+}
+
+#rules-no-space{
+  display: flex;
+  /* justify-content: space-between ; */
+  gap: 20px;
+  border: 10px solid var(--black-color);
+}
+
+#practice-rule{
+  padding: 0;
+  clip-path: none;
+  border: 0;
+  flex: 1;
+  margin: 0; 
+}
+
+#start-btn {
+  display: block;
+  margin: 0 auto; /* Centre horizontalement */
+  /* Autres styles selon vos besoins */
+}
+
+/* general? */
+.buttons-game-container .cyberpunk .glitched {
+  font-family: 'Press Start 2P';
+  border-right: 0;
+  /* margin-top: 5px; */
+  margin: 0 3rem 0 3rem;
+  font-size: small;
+  --text: 0;
+  padding: 0.5rem 1rem;
+  box-shadow: 10px 10px 10px 3px black;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+/* waiting */
+.waiting-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: yellow;
+    z-index: 50;
+    text-align: center;
+    display: none; /*Hidden by default */
+}
+
+.waiting-screen h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.waiting-gif {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0;
+    overflow: hidden;
+    border: 3px solid yellow;
+    border-radius: 10px;
+    background: url("../images/loading.gif") no-repeat center center;
+    background-size: cover;
+}
+
+.waiting-gif img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.game-over-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 3px solid yellow;
+    color: yellow;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 100;
+    display: none; /* Hidden by default */
+    min-width: 300px;
+}
+
+.game-over-panel h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.game-over-panel h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.game-over-buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-over-buttons button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.game-over-buttons button:hover {
+    background-color: #ffff66;
+}
+
+
+/* Tournament background */
+.tournament-background {
+    background: url('../images/cityscape.gif') no-repeat center center fixed !important; 
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    background-size: cover !important;
+}
+  
+/* Make sure the html background doesn't show through when tournament-background is active */
+.tournament-background html {
+    background: none;
+}
+
+.full-page-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/static/images/are_you_ready.gif') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1;
+}
+
+#app:has(.tournament-container) {
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 0;
+    margin: 0; 
+}
+
+/* Tournament container */
+.tournament-container {
+  /* background-color: black; */
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    margin: 20px;
+    /* align-items: center; */
+    min-height: 80vh;
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#back-to-profile {
+  display: block;
+  margin: 20px auto;
+}
+
+/* Selection panel with cyberpunk styling */
+
+#app:has(.selection-panel){
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+    margin-top: 0;
+    margin: 0; 
+}
+
+.selection-panel {
+  height:70%;
+  width: 100%;
+  max-width: 800px;
+  padding: 40px 30px 30px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.85);
+  color: var(--yellow-color);
+  border-right: 5px solid var(--border-color);
+  border-bottom: 3px solid var(--purple-color);
+  clip-path: polygon(
+      0% 20px, 
+      20px 0%, 
+      calc(70% - 20px) 0%, 
+      70% 20px, 
+      100% 20px, 
+      100% calc(100% - 30px), 
+      calc(100% - 30px) 100%, 
+      30px 100%, 
+      0% calc(100% - 30px)
+  );
+}
+
+.selection-panel h2.cyberpunk {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 0px var(--border-color);
+}
+
+/* Add a pseudo-element for additional styling */
+.selection-panel:before {
+    content: "T-SELECT";
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 40px;
+    padding: 2px 5px;
+    font-size: 0.7rem;
+    line-height: 0.7rem;
+    color: var(--black-color);
+    background-color: var(--yellow-color);
+    border-left: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Add a decorative element to the bottom left */
+.selection-panel:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 30px;
+    background-color: var(--purple-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    z-index: -1;
+}
+
+/* Add a glitch effect on hover */
+.selection-panel:hover:before {
+    animation-name: buttonhoverafter;
+    animation-duration: var(--glitched-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* Add a decorative header bar */
+.selection-panel-header {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    right: 30px;
+    height: 5px;
+    background-color: var(--purple-color);
+}
+
+/* Add a decorative footer bar */
+.selection-panel-footer {
+    position: absolute;
+    bottom: 10px;
+    left: 60px;
+    right: 30px;
+    height: 3px;
+    background-color: var(--blue-color);
+}
+
+.user-list-tourno {
+    /* display: grid; */
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    grid-template-columns: repeat(auto-fill, 150px);
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    max-height: 400px;
+    margin-left: -5px;
+}
+
+.user-item-tourno {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    border-right: 3px solid var(--border-color);
+    clip-path: polygon(
+        0% 0%,
+        calc(100% - 15px) 0%,
+        100% 15px,
+        100% 100%,
+        15px 100%,
+        0% calc(100% - 15px)
+    );
+    background-color: var(--black-color);
+    color: var(--yellow-color);
+    /* Garder les styles existants mais ajouter: */
+    flex: 0 0 auto;
+    margin-right: 5px; /* Espacement supplémentaire à droite */
+    transform: translateX(5px); /* Décaler légèrement vers la droite */
+}
+
+.user-item-tourno .username {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.user-item-tourno:after {
+    content: "USR";
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 5px;
+    padding: 2px 2px 0px 2px;
+    font-size: 0.6rem;
+    line-height: 0.6rem;
+    color: var(--black-color);
+    background-color: var(--yellow-color);
+    border-left: 2px solid var(--border-color);
+}
+
+.user-item-tourno:hover {
+    animation-name: buttonhover;
+    animation-duration: var(--glitched-duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.user-item-tourno.selected {
+    background-color: var(--green-color);
+    color: var(--black-color);
+}
+
+.user-item-tourno.selected:after {
+    content: "SEL";
+    background-color: var(--black-color);
+    color: var(--green-color);
+}
+
+.user-avatar {
+    font-family: 'Orbitron', sans-serif;
+    width: 60px;
+    height: 60px;
+    border-radius: 0;
+    background-color: var(--purple-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 70%,
+        70% 100%,
+        0% 100%
+    );
+}
+
+.user-item-tourno.selected .user-avatar {
+    background-color: var(--black-color);
+    color: var(--green-color);
+}
+
+.selected-users-display {
+    margin: 10px 0;
+    text-align: center;
+    color: var(--yellow-color);
+}
+
+.selection-status {
+    margin: 15px 0;
+    text-align: center;
+}
+
+#confirm-tournament-selection {
+    display: block;
+    margin: 20px auto;
+    width: fit-content;
+    min-width: 200px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#players-selected-text{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--yellow-color);
+    text-align: center;
+    margin: 20px 0;
+    clip-path: none;
+    padding: 0;
+}
+
+#selected-players {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    color: var(--yellow-color);
+    text-align: center;
+    margin: 20px 0;
+}
+
+.error-message {
+    color: var(--red-color);
+    text-align: center;
+    min-height: 24px;
+    margin: 15px 0;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+}
+
+.no-users {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 20px;
+    color: var(--yellow-color);
+}
+
+/* Tournament Winner Announcement */
+.tournament-winner-announcement {
+    text-align: center;
+}
+
+#winner-title{
+  margin-top: 10px;
+  padding-bottom: 0;
+}
+
+.winner-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5rem;
+    color: var(--yellow-color);
+    /* margin: 15px 0; */
+    text-shadow: 0 0 10px var(--yellow-color);
+    animation: winner-glow 2s infinite alternate;
+}
+
+@keyframes winner-glow {
+    from {
+        text-shadow: 0 0 5px var(--yellow-color), 0 0 10px var(--yellow-color);
+    }
+    to {
+        text-shadow: 0 0 10px var(--yellow-color), 0 0 20px var(--yellow-color), 0 0 30px var(--yellow-color);
+    }
+}
+
+.celebration-gif {
+  width: 300px;
+  height: 200px;
+  position: fixed;
+  background: url("../images/victory.gif") no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  border: 3px solid var(--yellow-color);
+  clip-path: polygon(
+    0px 25px,
+    26px 0px,
+    calc(60% - 25px) 0px,
+    60% 25px,
+    100% 25px,
+    100% calc(100% - 10px),
+    calc(100% - 15px) calc(100% - 10px),
+    calc(80% - 10px) calc(100% - 10px),
+    calc(80% - 15px) calc(100% - 0px),
+    10px calc(100% - 0px),
+    0% calc(100% - 10px)
+  );
+  z-index: 100;
+  
+  /* Utiliser deux animations séparées pour les mouvements X et Y */
+  animation: 
+    bounceX 10s linear infinite alternate,
+    bounceY 7s linear infinite alternate;
+}
+
+.celebration-gif:before {
+  content: "VICTORY";
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  font-size: 0.7rem;
+  color: var(--black-color);
+  background-color: var(--yellow-color);
+  padding: 2px 5px;
+  z-index: 10;
+}
+
+/* Animation horizontale */
+@keyframes bounceX {
+  0% { left: 0; }
+  100% { left: calc(100vw - 300px); }
+}
+
+/* Animation verticale - commence sous la navbar */
+@keyframes bounceY {
+  0% { top: 60px; } /* Commence sous la navbar */
+  100% { top: calc(100vh - 200px); }
+}
+
+.tournament-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0 15px;
+}
+
+/* Winner styling in bracket */
+.match-player.winner {
+    color: var(--green-color);
+    font-weight: bold;
+    position: relative;
+}
+
+.match-player.winner:after {
+    content: "★";
+    position: absolute;
+    right: -20px;
+    color: var(--yellow-color);
+}
+
+.cyberpunk-container {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    position: relative;
+    background-color: var(--black-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 92%);
+    border-right: 3px solid var(--border-color);
+    color: var(--yellow-color);
+    z-index: 10;
+}
+
+.cyberpunk-container:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--black-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%, 0 92%);
+    z-index: -1;
+    border: 2px solid var(--border-color);
+    transform: translate(4px, 0);
+}
+
+.cyberpunk-message {
+    margin: 20px 0;
+    color: var(--black-color)
+}
+
+.highlight {
+    color: var(--red-color);
+    font-weight: bold;
+    text-shadow: 0 0 5px var(--red-color-opacity);
+}
+
+.key {
+    display: inline-block;
+    padding: 2px 8px;
+    margin: 0 3px;
+    background-color: var(--yellow-color);
+    color: var(--black-color);
+    font-weight: bold;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 10% 100%, 0 80%);
+}
+
+/* Tournament Waiting View Styles */
+.tournament-panel {
+    width: 100%;
+    height: 70%;
+    max-width: 800px;
+    padding: 25px 30px 30px;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: var(--yellow-color);
+    border-right: 5px solid var(--border-color);
+    border-bottom: 3px solid var(--purple-color);
+    clip-path: polygon(
+      0% 20px,
+      20px 0%,
+      calc(70% - 20px) 0%,
+      70% 20px,
+      100% 20px,
+      100% calc(100% - 30px),
+      calc(100% - 30px) 100%,
+      30px 100%,
+      0% calc(100% - 30px)
+    );
+  }
+  
+  .tournament-panel-header {
+    position: absolute;
+    top: 0;
+    left: 30px;
+    right: 30px;
+    height: 5px;
+    background-color: var(--purple-color);
+  }
+  
+  .tournament-panel-footer {
+    position: absolute;
+    bottom: 10px;
+    left: 60px;
+    right: 30px;
+    height: 3px;
+    background-color: var(--blue-color);
+  }
+  
+  .tournament-status {
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  #tournament-status.cyberpunk.inverse:before {
+  content:"";
+  right:0;
+  bottom:0;  
+}
+
+  #tournament-status {
+    clip-path: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .tournament-status.error {
+    color: var(--red-color);
+  }
+  
+  .player-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+  
+  .player-slot {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: var(--black-color);
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .player-slot.filled {
+    border-right: 3px solid var(--green-color);
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 15px) 0%,
+      100% 15px,
+      100% 100%,
+      15px 100%,
+      0% calc(100% - 15px)
+    );
+  }
+  
+  .player-slot.empty {
+    border-right: 3px solid var(--purple-color);
+    clip-path: polygon(
+      0% 0%,
+      calc(100% - 15px) 0%,
+      100% 15px,
+      100% 100%,
+      15px 100%,
+      0% calc(100% - 15px)
+    );
+    opacity: 0.7;
+  }
+  
+  .player-avatar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 15px;
+    background-color: var(--purple-color);
+    color: var(--yellow-color);
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 70%,
+      70% 100%,
+      0% 100%
+    );
+  }
+  
+  .player-slot.filled .player-avatar {
+    background-color: var(--green-color);
+    color: var(--black-color);
+  }
+  
+  .player-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+  }
+  
+  .joined-status {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--green-color);
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .tournament-message {
+    margin: 20px 0;
+    text-align: center;
+    color: var(--yellow-color);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .tournament-container {
+      width: 95%;
+      padding: 10px;
+    }
+    
+    .player-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Tournament Bracket Styles */
+.tournament-panel.wide {
+    max-width: 900px;
+  }
+  
+  .tournament-bracket {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Semifinals section */
+  .semifinals {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  
+  /* Finals placeholder */
+  .finals-placeholder {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin-bottom: 40px;
+    position: relative;
+    margin-left: 10px;
+  }
+  
+  /* Tournament match styling */
+  .tournament-match {
+    width: 45%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--blue-color);
+    padding: 0;
+    position: relative;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% calc(100% - 15px),
+      calc(100% - 15px) 100%,
+      0% 100%
+    );
+    transition: all 0.3s ease;
+  }
+  
+  .finals-placeholder .tournament-match {
+    width: 100%;
+    border-color: var(--purple-color);
+    opacity: 0.7;
+  }
+  
+  .tournament-match.your-match {
+    border-color: var(--green-color);
+    box-shadow: 0 0 15px var(--green-color-opacity);
+  }
+  
+  .tournament-match.disabled {
+    opacity: 0.6;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Match header */
+  .match-header {
+    background-color: var(--blue-color);
+    color: var(--black-color);
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    position: relative;
+  }
+  
+  .your-match .match-header {
+    background-color: var(--green-color);
+  }
+  
+  .finals-placeholder .match-header {
+    background-color: var(--purple-color);
+  }
+  
+  /* Match players section */
+  .match-players {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  /* Player name styling */
+  .match-player {
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-left: 3px solid var(--yellow-color);
+    font-size: 0.9rem;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .match-player:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  /* VS element */
+  .match-vs {
+    text-align: center;
+    font-weight: bold;
+    color: var(--red-color);
+    font-size: 1.2rem;
+    margin: 5px 0;
+    text-shadow: 0 0 5px var(--red-color-opacity);
+    position: relative;
+  }
+  
+  .match-vs:before, .match-vs:after {
+    content: "";
+    position: absolute;
+    height: 1px;
+    background-color: var(--red-color);
+    width: 30%;
+    top: 50%;
+  }
+  
+  .match-vs:before {
+    left: 5%;
+  }
+  
+  .match-vs:after {
+    right: 5%;
+  }
+  
+  /* Match status */
+  .match-completed {
+    text-align: center;
+    padding: 8px;
+    background-color: var(--black-color);
+    color: var(--green-color);
+    font-weight: bold;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* Join game button container */
+  .tournament-match .join-game-btn {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    font-size: 0.9rem;
+    clip-path: none;
+  }
+  
+  /* Tournament instructions */
+  .tournament-instructions {
+    margin: 10px 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-left: 3px solid var(--yellow-color);
+    font-size: 17px;
+  }
+  
+  .tournament-instructions .highlight {
+    color: var(--green-color);
+    font-weight: bold;
+  }
+  
+  /* Winner styling */
+  .match-player.winner {
+    border-left-color: var(--green-color);
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+  .match-player.winner:after {
+    content: "★";
+    position: absolute;
+    right: 10px;
+    color: var(--green-color);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .semifinals {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .tournament-match {
+      width: 90%;
+    }
+    
+    .semifinals:after {
+      display: none;
+    }
+    
+    .finals-placeholder {
+      width: 90%;
+      margin-top: 30px;
+    }
+  }
+
+/* Tournament Finals View Styles */
+
+/* Finals section styling */
+.finals {
+    width: 50%;
+    /* margin: 0 auto; */
+    margin-left: 15px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Make sure finals match is properly sized */
+  .finals .tournament-match {
+    width: 100%;
+    border-color: var(--red-color);
+    background-color: rgba(0, 0, 0, 0.85);
+    margin-top: 20px;
+  }
+  
+  /* Highlight finals match */
+  .finals .tournament-match {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Finals match header */
+  .finals .match-header {
+    background-color: var(--red-color);
+    color: var(--black-color);
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+  
+  /* Match result styling */
+  .match-result {
+    text-align: center;
+    padding: 8px;
+    background-color: var(--black-color);
+    color: var(--yellow-color);
+    font-weight: bold;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  /* Winner result styling */
+  .match-result[data-winner]:not([data-winner=""]) {
+    color: var(--green-color);
+  }
+  
+  /* Completed match styling */
+  .tournament-match.completed {
+    opacity: 0.8;
+    border-color: var(--blue-color);
+  }
+  
+  .tournament-match.completed .match-header {
+    background-color: var(--blue-color);
+  }
+  
+  /* Create connecting lines between semifinals and finals */
+  @media (min-width: 769px) {
+    .semifinals {
+      position: relative;
+      margin-bottom: 30px;
+    }
+    
+    /* Central connector from semifinals to finals */
+    .semifinals:after {
+      content: "";
+      position: absolute;
+      bottom: -30px;
+      left: 25%;
+      width: 50%;
+      height: 30px;
+
+      z-index: 0;
+    }
+    
+    /* Individual semifinal connectors */
+    .semifinals .tournament-match:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      height: 2px;
+      background-color: var(--blue-color);
+      width: 20px;
+      z-index: 0;
+    }
+    
+    .semifinals .tournament-match:nth-child(1):after {
+      right: -20px;
+    }
+    
+    .semifinals .tournament-match:nth-child(2):after {
+      left: -20px;
+    }
+    
+    /* Finals match top connector */
+    .finals .tournament-match:before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      height: 20px;
+      width: 2px;
+      background-color: var(--red-color);
+      z-index: 0;
+    }
+  }
+  
+  /* Adjust semifinals layout in finals view */
+  .finals-view .semifinals {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .finals-view .semifinals .tournament-match {
+    width: 45%;
+  }
+  
+  /* Glowing effect for the final match when it's the user's match */
+  .finals .tournament-match.your-match {
+    animation: final-match-glow 2s infinite alternate;
+    border-color: var(--green-color);
+  }
+  
+  .finals .tournament-match.your-match .match-header {
+    background-color: var(--green-color);
+  }
+  
+  @keyframes final-match-glow {
+    from {
+      box-shadow: 0 0 10px var(--green-color-opacity);
+    }
+    to {
+      box-shadow: 0 0 20px var(--green-color);
+    }
+  }
+  
+  /* Responsive adjustments for finals view */
+  @media (max-width: 768px) {
+    .tournament-bracket { flex-direction: column;}
+    .finals {
+      width: 90%;
+    }
+    
+    .game-over-buttons {
+      flex-direction: column;
+    }
+    
+    #play-again-btn, #profile-btn {font-size:1rem;}
+
+    .finals .tournament-match {
+      transform: scale(1);
+      margin-top: 30px;
+    }
+    
+    .semifinals .tournament-match {
+      margin-bottom: 15px;
+    }
+  }

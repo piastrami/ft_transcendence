@@ -1,0 +1,14 @@
+**/__pycache__/
+*.pyc
+*.pyo
+*.pdf
+bin/
+staticfiles/
+test/test-results/
+test/node_modules/
+.github/
+*.log
+.env
+.env.example
+debug.log
+*selenium_env*

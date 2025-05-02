@@ -1,0 +1,6 @@
+.navbar-brand {
+    font-family: "Press Start 2P" !important;
+    text-shadow: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff;
+    color: #000;
+    font-style: italic; 
+  }

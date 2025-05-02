@@ -1,0 +1,255 @@
+#app:has(.profile-view) {
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 0;
+    pointer-events: auto !important;
+}
+
+section.profile-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    pointer-events: auto !important;
+}
+
+/* header user */
+.account-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    background: rgba(30, 30, 46, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+.user-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding: 10px 0 10px 6rem;
+    justify-content: flex-start;
+    position: relative;
+}
+
+#profile-avatar {
+    padding: 0 !important;
+    clip-path: none !important;
+    width: 100px;
+    height: 100px;
+    margin: 0.5rem;
+    border-radius: 50%;
+}
+
+.account-username {
+    font-family: 'Press Start 2P';
+    color: white;
+    font-size: 2rem;
+    margin: 0.5rem 0 0 1rem;
+}
+
+/* add as friend button */
+#button-friend{
+    background-color: #08d8da;
+    position: absolute;
+    right: 3rem;
+    max-width: 150px;
+    font-size: small;
+    font-family: 'Press Start 2P';
+}
+
+#button-friend.cyberpunk {
+    padding: 5px 5px 5px 10px;
+    --background-color: #08d8da;
+}
+
+/* game buttons */
+.buttons-game-container {
+    width: 100%;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.buttons-game-container .cyberpunk.purple {
+    font-family: 'Press Start 2P';
+    border-right: 0;
+    margin: 0 3rem 0 3rem;
+    font-size: small;
+    --text: 0;
+    padding: 0.5rem 1rem;
+    box-shadow: 10px 10px 10px 3px black;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+/* buttons !isOwnProfile */
+#friends-title {
+    color: white;
+    margin-top: 0.5rem;
+    font-family: "Press Start 2P";
+    font-size: small;
+}
+
+#friends-title::before {
+    background-color: yellow;
+}
+
+#no-friends-message{
+    font-family: "Press Start 2P";
+    font-size: xx-small;
+    margin-top: 0.5rem;
+}
+
+/* responsivness */
+@media (max-width: 830px) {
+
+    .buttons-game-container {
+        flex-wrap: wrap;
+        padding: 3rem;
+    }
+
+    .buttons-game-container .cyberpunk.purple {
+        margin: 0 2rem 1rem 1rem;
+    }
+
+    .user-container{
+        padding: 10px 0 10px 3rem;
+    }
+}
+
+@media (max-width: 480px){
+
+    .user-container {
+        padding: 10px 0 10px 0;
+        justify-content: center;
+    }
+
+    #profile-avatar{
+        height: 60px;
+        width: 60px;
+    }
+
+    .account-username {
+        font-size: 1.5rem;
+    }
+
+    .buttons-game-container {
+        flex-wrap: wrap;
+        padding: 1rem;
+    }
+
+    .buttons-game-container .cyberpunk.purple {
+        margin-top: 15px;
+    }
+}
+
+/* Friends section */
+.friends-container {
+    padding-top: 10px;
+    height: 141px;
+    width: 100%;
+    background: var(--purple-color);
+    min-height: 4rem;
+    padding: 0 7rem 0.5rem 7rem;
+    pointer-events: auto !important;
+}
+
+.account-friends-title {
+    margin: 1rem 0 0.5rem 5px;
+    text-align: center;
+    font-family: 'Press Start 2P';
+    font-size: 1rem;
+}
+
+.friends {
+    color:white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+    overflow-x: auto; /* scrollbar when necessary*/
+    white-space: nowrap; /* Empêche les éléments de passer à la ligne */
+    pointer-events: auto !important;
+    padding: 0 0 10px 0;
+    ;
+}
+
+@supports (justify-content: safe center) {
+    .friends {
+        justify-content: safe center;
+    }
+}
+
+/* style de la barre de defilement */
+.friends::-webkit-scrollbar {
+    background-color: var(--yellow-color);
+    /* color: var(--red-color); */
+    height: 6px; 
+}
+  
+.friends::-webkit-scrollbar-button {
+    display: none;
+}
+  
+.friends::-webkit-scrollbar-track {
+    display: none;
+}
+  
+.friends::-webkit-scrollbar-track-piece {
+    display: none;
+}
+  
+.friends::-webkit-scrollbar-thumb {
+    background-color: var(--purple-color);
+    border-bottom: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
+    border-radius: 3px;
+    transition: background var(--glitched-duration);
+}
+  
+.friends::-webkit-scrollbar-thumb:hover {
+    background-color: var(--orange-color);
+}
+  
+.friends::-webkit-scrollbar-corner {
+    display: none;
+}
+  
+.friends::-webkit-resizer {
+    display: none;
+}
+
+.friend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px; /* Fixed width to ensure consistent spacing */
+    flex-shrink: 0; /* Empêche les éléments de se rétrécir */
+}
+
+.friend-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px 1px rgba(0,0,0,0.5);
+}
+
+.friend-name {
+    margin-top: 5px;
+    font-size: 0.5rem;
+    text-align: center;
+    width: 100%; /* Ensure name stays under avatar */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    font-family: 'Press Start 2P';
+}

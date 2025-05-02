@@ -1,0 +1,54 @@
+services:
+
+  django:
+    container_name: django
+    image: django:https
+    build: 
+      context: .
+      dockerfile: servers/django/Dockerfile
+    volumes:
+      - .:/app
+      - ./static:/app/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy  
+    env_file: .env
+
+  daphne:
+    container_name: daphne
+    image: daphne:wss
+    build: 
+      context: .
+      dockerfile: servers/daphne/Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "8001:8001"
+    env_file: .env
+
+  redis:
+    image: "redis:7.4"
+    container_name: redis
+    restart: always
+    ports:
+      - "8002:6379"
+
+  db:
+    image: postgres:13
+    container_name: postgres_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file: .env
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -d $POSTGRES_DB"]
+      interval: 5s
+      retries: 5
+      start_period: 10s
+
+volumes:
+  postgres_data:
+    name: my_postgres_data
