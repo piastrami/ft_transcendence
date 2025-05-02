@@ -19,7 +19,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     # OTP fields
     otp = models.CharField(max_length=6, null=True, blank=True)
     otp_expiry = models.DateTimeField(blank=True, null=True)
-    otp_secret = models.CharField(max_length=32, null=True, blank=True)  # To store the # OAuth fields
+    otp_secret = models.CharField(max_length=32, null=True, blank=True)  
+    # To store the # OAuth fields
     enabled_oauth = models.BooleanField(default=False)
     oauth_access_token = models.CharField(max_length=255, blank=True, null=True)
     oauth_user_id = models.CharField(max_length=255, unique=True, null=True, blank=True)  # Store OAuth ID

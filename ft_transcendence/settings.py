@@ -227,8 +227,8 @@ LOGGING = {
 
 # settings.py example for sending emails in development
 DEFAULT_FROM_EMAIL = 'noreply@skydjangjao2.420042.xyz'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_SSL = True #https://docs.djangoproject.com/en/5.1/ref/settings/#email-use-ssl

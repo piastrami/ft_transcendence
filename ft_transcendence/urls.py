@@ -13,7 +13,7 @@ def media_serve(request, path):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include("authentication.urls")), 
+    # path('', include("authentication.urls")), # // Can comment temporarily since login42 can only work if the app is on the internet with a domain name
     path("authentication/", include("authentication.urls")), 
     path("profiles/", include("profiles.urls")), 
     path("chat/", include("chat.urls")),
