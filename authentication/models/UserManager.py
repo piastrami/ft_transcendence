@@ -1,16 +1,10 @@
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import BaseUserManager
-from django.core.exceptions import ValidationError
+from rest_framework.exceptions import ValidationError
 from django.core.validators import validate_email
 
 
 class UserManager(BaseUserManager):
-
-    def email_validator(self, email):
-        try:
-            validate_email(email)
-        except ValidationError as e:
-            raise ValidationError(_('please enter a valid email adress')) from e
 
     def create_user(self, email, username, password, **extra_fields):
         if not email:
@@ -21,7 +15,10 @@ class UserManager(BaseUserManager):
             raise ValueError(_('The Password field must be set'))
 
         email = self.normalize_email(email)
-        self.email_validator(email)
+        try:
+            validate_email(email)
+        except ValidationError as e:
+            raise e
 
         user = self.model(
             email=self.normalize_email(email),
@@ -46,9 +43,12 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_verified') is not True:
             raise ValueError(_('is_verified must be set to True for superuser'))
 
-        user = self.create_user(
-            email, username, password, **extra_fields
-        )
+        try:
+            user = self.create_user(
+                email, username, password, **extra_fields
+            )
+            user.save(using=self._db)
+            return user
+        except Exception as e:
+            pass
 
-        user.save(using=self._db)
-        return user
