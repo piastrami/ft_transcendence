@@ -14,7 +14,7 @@ export default class extends AbstractView {
         return `
             <div id="login-section">
                 <div id="login-form">
-                    <h3 class="cyberpunk">Login or e-mail</h3>
+                    <h3 class="cyberpunk">Username or e-mail</h3>
                     <input id="signin-email-or-username" class="cyberpunk" type="text">
                     <h3 class="cyberpunk">Password</h3>
                     <input id="login-password" class="cyberpunk" type="password">

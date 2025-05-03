@@ -10,9 +10,9 @@ export default class extends AbstractView {
 
     async getHtml() {
         return `
-            <div id="login-section">
-            <div id="login-form">
-                <h3 class="cyberpunk">Login</h3>
+            <div id="signup-section">
+            <div id="signup-form">
+                <h3 class="cyberpunk">Username</h3>
                 <input id="signup-username" class="cyberpunk" type="text">
                 <h3 class="cyberpunk glitched">E-mail</h3>
                 <input id="signup-email" class="cyberpunk" type="text">
